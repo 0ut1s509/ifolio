@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+{% endblock %}
+{% block carousel %}
+    <div></div>
+{% endblock %}
+
+{% block body %}
+
+
+{% for el in projet %}
+<div class="card mb-3 text-center w-100 text-light vh-100" style="max-width: 100%; background-color: #383d74;">
+    <div class="row g-0">
+     <div class="col-md-4">
+        {% if el.foto %} <img
+        src="{{el.foto.url}}" 
+          alt="Trendy Pants and Shoes"
+          class="img-fluid  "
+        /> {% else %}<img src="https://images.pexels.com/photos/3183188/pexels-photo-3183188.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid "/>{% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <div class="card-header">
+            <h1 class="display-1 pb-2">Project Details</h1>
+          </div>
+          <h1 class="card-title">Title</h1>
+          <p class="card-text">
+            {{el.tit}}
+          </p>
+
+          <h1 class="card-title">Description</h1>
+
+          <p class="card-text">
+            {{el.deskripsyon}}
+        </p>
+
+          <h1 class="card-title">Category</h1>
+          <p class="card-text">
+            {{el.categorys}}
+          </p>
+
+          <h1 class="card-title">Date</h1>
+          <p class="card-text">
+            {{el.dat_kreye}}
+          </p>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+<!-- {% for el in projet %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="profile-head">
+            <div class="profiles col-xs-9 col-xs-push-2  col-sm-10 col-sm-push-1 thumbnail">
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="row">
+                        {% if not el.foto %}<img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-responsive" />{% else %}<img src="{{el.foto.url}}" class="img-responsive"/>{% endif %}
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <span class="col-sm-12"><h1>{{el.user}}</h1></span>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <p>Titre : {{el.tit}}</p>
+                            <ul>
+                                <li><span>Dat Kreyasyon : {{el.dat_kreye}}</span></li>
+                                <li><span>Slug : {{el.slug}}</span></li>
+                                <li><span>Category : {{categorys.project_set.all}}</span></li>
+
+                                <li><span>Deskripsyon : {{el.deskripsyon}}</span></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>  
+{% endfor %} -->
+
+{% endblock%}

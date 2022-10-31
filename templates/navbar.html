@@ -1,0 +1,48 @@
+<br><br>
+<header class="">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-5">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          {% if otantifye %}
+
+          <a class="nav-link active" aria-current="page" href="/new-project/">New Project</a>
+          {% endif %}
+
+        </li>
+      </ul>
+
+      {% if otantifye %}
+        
+      <div class="dropdown text-end pe-5">
+        <a href="#" class="d-block link-info text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          {% if request.user.profile.foto.url %}
+          <img src="{{request.user.profile.foto.url}}" alt="mdo" width="50" height="50" class="rounded-circle">
+          {% else %}
+          <img src="https://images.pexels.com/photos/13265836/pexels-photo-13265836.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="mdo" width="50" height="50" class="rounded-circle">
+          {% endif %}
+        </a>
+        <ul class="dropdown-menu text-small bg-info">
+          <li><a class="dropdown-item" href="/new-project/" >New project...</a></li>
+          <li><a class="dropdown-item" href="/profile/{{request.user.pk}}">Profile</a></li>
+          <li><a class="dropdown-item" href="/dekonekte/" >Sign out</a></li>
+        </ul>
+      </div>
+      {% else %}
+      <a href="/konekte/"><button type="button" class="btn btn-info me-1"> Log in</button></a>
+     <a href="/enskri/"> <button type="button" class="btn btn-info"> Suscribe</button></a>
+
+
+      
+      {% endif %}
+    </div>
+  </div>
+  </div>
+  </nav>
+  </header>

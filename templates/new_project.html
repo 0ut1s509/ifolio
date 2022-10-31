@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+
+{% block css %}
+<style>
+
+</style>
+{% endblock %}
+
+{% block carousel %}
+{% endblock %}
+
+{% block body %}
+<section class="" >
+	<div class="container-fluid  h-100 vh-100" >
+	  <div class="row d-flex justify-content-center align-items-center h-100 ">
+		<div class="col col-xl-16">
+		  <div class="card" style="border-radius: 3rem; ">
+			<div class="row g-0">
+			  <div class="col-md-6 col-lg-5 d-none d-md-block">
+				<img src="https://images.pexels.com/photos/3201478/pexels-photo-3201478.jpeg?auto=compress&cs=tinysrgb&w=600"
+				  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" width="" />
+			  </div>
+			  <div class="col-md-2 col-lg-7 d-flex align-items-center" style="background-color: rgb(68, 35, 128);">
+				<div class="card-body  text-light" >
+  
+				  <form enctype="multipart/form-data" method="POST" action="/new-project/">
+					{% csrf_token %}
+
+  
+					<div class="d-flex align-items-center mb-3 pb-1">
+					  <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+					  <div class="card-header"> <span class="h1 fw-bold mb-0 text-capitalize">Create the project </span></div>
+					 
+					</div>
+  
+					{% if error_message %}<p class="text-danger">{{error_message}}</p>{% endif %}
+
+						{{form.errors}}
+					<div class="form-outline mb-2">
+						{{form.tit}}
+					  <label class="form-label" for="form2Example27">Title</label>
+					</div>
+
+
+
+
+					<div class="form-outline mb-2">
+						{{form.deskripsyon}}
+                        <label class="form-label" for="form2Example27">Description</label>
+                      </div>
+
+
+					<div class="form-outline mb-2">
+						{{form.foto}}
+                        <label class="form-label" for="form2Example27">Picture</label>
+                      </div>
+
+					  <div class="form-outline mb-2">
+					  	{{form.categorys}}
+                        <label class="form-label" for="form2Example27">Category</label>
+                      </div>
+
+					  <div class="pt-1 mb-4">
+						<button class="btn btn-dark btn-lg" type="submit">Create</button>
+					  </div>
+				  </form>
+				  
+  
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section> 
+{% endblock%}

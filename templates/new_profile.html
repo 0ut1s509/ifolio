@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}  
+
+{% block body %}
+<center>
+<h1>Create Your Profile</h1>
+<form action="/new-profile/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-success">Anrejistre</button>
+</form>
+</center><br>
+{% endblock%}
