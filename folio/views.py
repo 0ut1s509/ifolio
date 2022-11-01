@@ -35,10 +35,9 @@ def showProfile(request, user):
     profile = Profile.objects.select_related('user').filter(user = user)
     projet0=None
     
-    print('user',request.user.profile.foto.url)
 
-    for el in projet:
-        projet0=el.user
+    for el in profile:    
+        profile0=el.user
 
 
     profile1 = Profile.objects.get(user = user)
@@ -48,14 +47,14 @@ def showProfile(request, user):
 
  
     if modify:
-        if request.user == projet0:
+        if request.user == profile0:
             return redirect(modifyProfile, user = user)
     context ={
 
         'projet' : projet,
         'profile': profile,
         'profile1': profile1,
-        'projet0' : projet0,
+        'profile0' : profile0,
  
     }
     return render(request, 'showProfile.html',context)
@@ -74,7 +73,7 @@ def redirProfile(request):
     context = {
 
     }
-    return render(request, 'viewProfile.html', context)
+    return render(request, 'showProfile.html', context)
 
 def modifyProfile(request, user):
     profile = Profile.objects.get(user = user)

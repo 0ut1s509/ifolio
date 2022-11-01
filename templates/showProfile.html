@@ -31,37 +31,38 @@
               <div class="card mb-4 mb-xl-0 vh-100 " style="background-color: rgb(68, 35, 128);">
                   <div class="card-body text-center  ">
                       <!-- Profile picture image-->
-                      {% if not profile1.foto %}
-                      <img class="img-account-profile rounded-circle mb-2 " src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="" height="auto" width="50%">
+                      {% for el in profile %}
+                      {% if el.foto %}
+                      <img src="{{el.foto.url}}" class="img-account-profile rounded-circle mb-2" height="auto" width="50%"/>
 
                       {% else %}
-                      <img src="{{profile1.foto.url}}" class="img-account-profile rounded-circle mb-2" height="auto" width="50%"/>
+                      <img class="img-account-profile rounded-circle mb-2 " src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="" height="auto" width="50%">
+
                       {% endif %}
+                      {% endfor %}
 
 
 
               <h5 class="card-title text-light">{{profile1.user}}</h5>
-              <p class="card-text text-light">imel: {{profile1.imel}}</p>
+              <p class="card-text text-light">Email : {{profile1.imel}}</p>
 
-              <p class="card-text text-light">non : {{profile1.non}}</p>
-              <p class="card-text text-light">siyati : {{profile1.siyati}} </p>
-              <p class="card-text text-light">tel: {{profile1.telefon}}</p>
+              <p class="card-text text-light">First name : {{profile1.non}}</p>
+              <p class="card-text text-light">Last name : {{profile1.siyati}} </p>
+              <p class="card-text text-light">Phone number : {{profile1.telefon}}</p>
 
-              {% if request.user == projet0 %}
+              {% if request.user == profile0 %}
               <form action="" method="post"> 
                 {% csrf_token %}
                 <button  class="btn btn-info" type="submit" value="modify" name="modify"> Edit profile</button>
               </form>
               {% endif %}
-        
-
-
+    
                   </div>
               </div>
           </div>
           <div class="col-xl-8" >
               <!-- Account details card-->
-              <div class="card mb-5 " style="background-color: rgb(68, 35, 128);">
+              <div class="card mb-5 h-100" style="background-color: rgb(68, 35, 128);">
                 <div class="card-header">
                     <h1 class="text-light mb-3 text-center card-title display-4" >Project</h1>
                   </div>
@@ -69,7 +70,7 @@
                   
                     {% if projet %}
                       <div class="row">
-                        {% for el in projet %}
+                      {% for el in projet %}
                         <div class="col-4 mb-mt-3">
                           <p class="card-text text-light text-center">
                             <a href="/project/{{el.slug}}/{{el.user.pk}}" >
@@ -80,10 +81,15 @@
                             </a>
                           </p>
                         </div>
-                        {% endfor %}
+                        
+                      {% endfor %}
                       </div>
-                          
+                      {% else %}
+                      <p class="card-text text-info text-center">No project yet</p>
+
+
                     {% endif %}
+                 
                           </div>
                   </div>
               </div>

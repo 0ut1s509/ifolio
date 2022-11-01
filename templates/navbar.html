@@ -18,11 +18,11 @@
         </li>
       </ul>
 
-      {% if otantifye %}
+    {% if otantifye %}
         
       <div class="dropdown text-end pe-5">
         <a href="#" class="d-block link-info text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          {% if request.user.profile.foto.url %}
+          {% if request.user.profile.foto %}
           <img src="{{request.user.profile.foto.url}}" alt="mdo" width="50" height="50" class="rounded-circle">
           {% else %}
           <img src="https://images.pexels.com/photos/13265836/pexels-photo-13265836.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="mdo" width="50" height="50" class="rounded-circle">
@@ -40,7 +40,7 @@
 
 
       
-      {% endif %}
+    {% endif %}
     </div>
   </div>
   </div>

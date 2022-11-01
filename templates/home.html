@@ -75,9 +75,9 @@
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-2 text-center"><h3>{{el.user}}</h3></div>
                         <!-- Profile picture upload button-->
-                        <form action="/redirprofile/" method="post" class="text-center">
+                        <form action="/profile/{{el.user.pk}}" method="post" class="text-center">
                             {% csrf_token %} 
-                            <button type="submit" class="btn btn-primary mb-5" value="{{el.user_id}}" name="profile">Profile
+                            <button type="submit" class="btn btn-primary mb-5" value="{{el.user.pk}}" name="profile">Profile
                             </button>
                         </form>
 

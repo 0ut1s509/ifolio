@@ -26,7 +26,8 @@ body{
           <div class="card mb-4 mb-xl-0 " style="background-color: rgb(68, 35, 128);">
               <div class="card-body text-center vh-100">
                   <!-- Profile picture image-->
-                  {% if request.user.profile.foto.url %}
+                  
+                  {% if request.user.profile.foto %}
                   <img class="img-account-profile rounded-circle mb-2 " src="{{request.user.profile.foto.url}}" alt="" width="50%">
                   {% else %}
                   <img class="img-account-profile rounded-circle mb-2" src="https://w1.pngwing.com/pngs/698/248/png-transparent-project-management-professional-text-grafana-marketing-influxdb-performance-metric-project-management-body-of-knowledge-organization-elasticsearch.png" alt="" width="50%">
