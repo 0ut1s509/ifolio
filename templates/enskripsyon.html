@@ -32,7 +32,16 @@
 					  <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
 					  <span class="h1 fw-bold mb-0 text-uppercase">subscription</span>
 					</div>
-  
+					
+					{% for message in messages %}
+
+						<div class="alert alert-failed text-danger">
+							<a class="close" href="#" data-dismiss="alert">×</a>
+
+							{{ message }}
+
+						</div>
+        			{% endfor %}
 					<h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Fill in the field below to register</h5>
 					{% if error_message %}<p class="text-danger">{{error_message}}</p>{% endif %}
 

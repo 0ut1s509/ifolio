@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block navbar %}
+{% endblock %}
+
+{% block carousel %}
+
+{% endblock %}
+
+{% block body %}
+
+<section>
+    <div class="row m-4 justify-content-center text-center mb-5">
+        <hr class="">
+
+        <div class="sub-heading text-center mb-4">
+            <span class="h1">All Users</span>
+        </div>
+        <hr>
+        {% for el in profile %}
+            <div class="col-md-3 align-items-center">
+                <!-- Profile picture card-->
+                        <!-- Profile picture image-->
+                {% if el.foto %}<img class="rounded-circle account-img" src="{{el.foto.url}}" alt="" class="img-responsive img-fluid" width="100%">
+                {% else %}
+                <img class="rounded-circle account-img" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="img-responsive" width="100%">
+                {% endif %}
+                        <!-- Profile picture help block-->
+                        <div class="small font-italic text-muted mb-2 text-center"><h3>{{el.user}}</h3></div>
+                        <!-- Profile picture upload button-->
+                        <form action="/profile/{{el.user.pk}}" method="post" class="text-center">
+                            {% csrf_token %} 
+                            <button type="submit" class="btn btn-primary mb-5" value="{{el.user.pk}}" name="profile">Profile
+                            </button>
+                        </form>
+
+            </div>
+        {% endfor %}
+</section>
+
+{% endblock %}

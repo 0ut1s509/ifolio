@@ -4,15 +4,28 @@ from django.contrib.auth import authenticate,login, logout
 from django.shortcuts import redirect, render
 from .form_enskripsyon import EnkripsyonForm
 from .forms import NewProjectForm, UpdateProfileForm
+from django.contrib import messages
 
 
 # Create your views here.
 def home(request):
     otantifye=request.user.is_authenticated
     
-    project = Project.objects.select_related('user').order_by('user')
+    project = Project.objects.select_related('user').order_by('-dat_kreye')
     profile = None
     profile1 =Profile.objects.all()
+
+    nombre = 0
+    more =None
+    for el in profile1:
+        if el.user:
+            nombre+=1
+
+    if nombre > 4:
+        more = nombre
+
+
+
     if otantifye:
         profile, created = Profile.objects.get_or_create(user = request.user)
         
@@ -23,6 +36,8 @@ def home(request):
         'otantifye': otantifye,
         'profile' : profile,
         'profile1' : profile1,
+        'more'   : more,
+        
         
 
     }
@@ -110,6 +125,10 @@ def inscrire(request):
             email=request.POST.get('username')
             modpas=request.POST.get('password')
             cmodpas= request.POST.get('confirm_password')
+
+            if User.objects.filter(username = email).first():
+                messages.error(request, "This username is already taken")                
+                return redirect(inscrire)
 
             if modpas != cmodpas:
                 error_message = "Password isn't the same"
@@ -252,3 +271,11 @@ def navbar(request):
         'otantifye' : otantifye
     }
     return render(request, 'navbar.html',context)
+
+def all_profile(request):
+    profile = Profile.objects.all()
+    context={
+        'profile' : profile,
+
+    }
+    return render(request, 'all-profile.html',context )

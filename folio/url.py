@@ -15,6 +15,8 @@ urlpatterns = [
     path('project/<str:slug>/<str:prouser>', views.showProject),
     path('new-profile/', views.newProfile),
     path('modify-profile/<int:user>', views.modifyProfile),
+    path('all-profile/', views.all_profile, name='all_profile'),
+
 
 
 ]

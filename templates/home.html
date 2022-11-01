@@ -64,7 +64,7 @@
             <span class="h1">Users</span>
         </div>
         <hr>
-        {% for el in profile1 %}
+        {% for el in profile1|slice:":8" %}
             <div class="col-md-3 align-items-center">
                 <!-- Profile picture card-->
                         <!-- Profile picture image-->
@@ -83,6 +83,8 @@
 
             </div>
         {% endfor %}
+        {% if more %} <p class="me-0"><a href="/all-profile/" class="btn btn-info">Show more</a></p>{% endif %}
+
         <hr>
 
     </div>
@@ -99,16 +101,16 @@
 
   
           <div class="row content text-center d-flex">
-            <div class="col-lg-4 col-sm-9 mt-4 pt-5">
-                <br><br><br><br>
-                <div class="sub-heading text-center mb-4">
-                    <span class="h1">About us</span>
+            <div class="col-lg-8 col-sm-9">
+                <img src="https://www.pngitem.com/pimgs/m/444-4448177_meeting-round-table-png-transparent-png.png" alt="" class="img-fluid">
+
+            </div>
+            <div class="col-lg-4 col-sm-3 mt-5">
+                <div class="sub-heading text-center mt-5 ">
+                    <span class="h1 mt-5 pt-5">About us</span>
                 </div>
               <p class="mt-3 ">Our goal is to give you a place where you can safely create projects and share your content with the world</p>
               <a href="#" class="btn-info">Learn More</a>
-            </div>
-            <div class="col-lg-8 col-sm-3">
-            <img src="https://www.pngitem.com/pimgs/m/444-4448177_meeting-round-table-png-transparent-png.png" alt="" class="img-fluid">
             </div>
           </div>
   
